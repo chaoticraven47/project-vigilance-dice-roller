@@ -1,0 +1,344 @@
+* {
+    box-sizing: border-box;
+}
+
+/* Overall page */
+html {
+    background-color: #07111f;
+    background-image:
+        radial-gradient(circle at 15% 20%, #e4b65e 0 1px, transparent 2px),
+        radial-gradient(circle at 70% 35%, #79d9a8 0 1px, transparent 2px),
+        radial-gradient(circle at 40% 80%, #e7edf3 0 1px, transparent 2px);
+    background-size:
+        180px 180px,
+        260px 260px,
+        320px 320px;
+}
+
+body {
+    max-width: 600px;
+    min-height: 100vh;
+    margin: 0 auto;
+    padding: 24px 16px;
+    color: #e7edf3;
+    background-color: #0d1926;
+    border-left: 2px solid #9b7742;
+    border-right: 2px solid #9b7742;
+    box-shadow: 0 0 40px #000000;
+    font-family: Arial, sans-serif;
+}
+
+h1::after {
+    display: block;
+    width: 70%;
+    height: 2px;
+    margin: 14px auto 24px;
+    background-color: #9b7742;
+    content: "";
+}
+
+/* Main Heading */
+h1 {
+    color: #e4b65e;
+    text-align: center;
+}
+
+/* Input labels */
+label {
+    display: block;
+    margin-top: 18px;
+    margin-bottom: 6px;
+}
+
+/* Number boxes and dropdowns */
+#diceCount,
+#targetNumber {
+    width: 100%;
+    padding: 12px;
+    color: #9ce8bd;
+    background-color: #18212b;
+    border: 1px solid #506273;
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+/* Roll button */
+button {
+    width: 100%;
+    margin-top: 24px;
+    padding: 14px;
+    color: #08110d;
+    background-color: #79d9a8;
+    border: none;
+    border-radius: 6px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #9ce8bd;
+}
+
+/* Result display */
+#result {
+    margin-top: 24px;
+    padding: 16px;
+    min-height: 56px;
+    background-color: #111820;
+    border-left: 4px solid #79d9a8;
+    border-radius: 4px;
+    overflow-wrap: anywhere;
+}
+/* Roll History */
+h2 {
+    margin-top: 32px;
+    color: #79d9a8;
+}
+
+#historyList{
+    padding: 0;
+    list-style: none;
+}
+
+#historyList li {
+    margin-bottom: 8px;
+    padding: 12px;
+    background-color: #18212b;
+    border-radius: 6px;
+
+}
+
+#clearHistoryButton {
+    margin-top: 0;
+    color: #e7edf3;
+    background-color: #25313d;
+}
+
+#clearHistoryButton:hover {
+    background-color: #344454;
+
+}
+
+/* Dice selection area */
+.dice-picker {
+    margin-top: 18px;
+    padding: 0;
+    border: none;
+}
+
+.dice-picker legend {
+    margin-bottom: 10px;
+}
+
+#diceOptions {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+
+.dice-option {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 12px 6px;
+    background-color: #111820;
+    border: 1px solid #506273;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.dice-option:hover {
+    border-color: #e4b65e;
+}
+
+/* Hide the radio circle but keep it functional */
+.dice-option input {
+    position: absolute;
+    opacity: 0;
+}
+
+/* Basic dice shape */
+.die-shape {
+    display: block;
+    width: 58px;
+    height: 58px;
+    background-color: #506273;
+}
+
+/* Individual silhouettes */
+.die-d2 {
+    border-radius: 50%;
+}
+
+.die-d4 {
+    clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+}
+
+.die-d6 {
+    border-radius: 7px;
+}
+
+.die-d8 {
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+}
+
+.die-d10 {
+    clip-path: polygon(50% 0%, 95% 35%, 75% 100%, 25% 100%, 5% 35%);
+}
+
+.die-d12 {
+    clip-path: polygon(
+        50% 0%,
+        75% 7%,
+        93% 25%,
+        100% 50%,
+        93% 75%,
+        75% 93%,
+        50% 100%,
+        25% 93%,
+        7% 75%,
+        0% 50%,
+        7% 25%,
+        25% 7%
+    );
+}
+
+.die-d20 {
+    clip-path: polygon(
+        50% 0%,
+        93% 25%,
+        93% 75%,
+        50% 100%,
+        7% 75%,
+        7% 25%
+    );
+}
+
+.die-d100 {
+    clip-path: polygon(
+        50% 0%,
+        80% 10%,
+        100% 35%,
+        100% 65%,
+        80% 90%,
+        50% 100%,
+        20% 90%,
+        0% 65%,
+        0% 35%,
+        20% 10%
+    );
+}
+
+.die-name {
+    margin-top: 8px;
+    font-weight: bold;
+}
+
+/* Highlight the selected die */
+.dice-option input:checked + .die-shape {
+    background-color: #e4b65e;
+    transform: scale(1.08);
+}
+
+.dice-option:has(input:checked) {
+    background-color: #1f2730;
+    border-color: #e4b65e;
+    box-shadow: 0 0 10px #e4b65e;
+}
+.dice-option input:checked ~ .die-name {
+    color: #e4b65e;
+}
+
+/* Show keyboard focus */
+.dice-option input:focus-visible + .die-shape {
+    outline: 3px solid #79d9a8;
+    outline-offset: 3px;
+}
+
+@media (max-width: 380px) {
+    #diceOptions {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Individual roll boxes */
+.rolls-display {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(48px, 1fr));
+    gap: 8px;
+    max-height: 260px;
+    overflow-y: auto;
+}
+
+.roll-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 6px;
+    color: #e7edf3;
+    background-color: #18212b;
+    border: 1px solid #506273;
+    border-radius: 6px;
+    font-weight: bold;
+    animation: reveal-roll 250ms ease-out;
+}
+
+.roll-box.match {
+    color: #08110d;
+    background-color: #e4b65e;
+    border-color: #e4b65e;
+    box-shadow: 0 0 8px #e4b65e;
+}
+
+/* Roll summary */
+.result-summary {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-top: 18px;
+}
+
+.summary-box {
+    padding: 14px 8px;
+    text-align: center;
+    background-color: #07111f;
+    border: 1px solid #9b7742;
+    border-radius: 8px;
+}
+
+.summary-label {
+    display: block;
+    color: #9fb3c5;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.summary-value {
+    display: block;
+    margin-top: 6px;
+    color: #e4b65e;
+    font-family: Georgia, serif;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+@keyframes reveal-roll {
+    from {
+        opacity: 0;
+        transform: scale(0.75);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+#rollButton:active {
+    transform: translateY(2px);
+}

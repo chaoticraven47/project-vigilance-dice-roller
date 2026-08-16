@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChaoticRaven's Dice Roller</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>ChaoticRaven's Dice Roller</h1>
+    <p>The Dice Will Decide Your Fate.</p>
+    <label for="diceCount">Number of dice:</label>
+    <input id="diceCount" type="number" min="1" max="1000" step="1" value="1">
+      <fieldset class="dice-picker">
+        <legend>Choose a die:</legend>
+
+        <div id="diceOptions">
+            <label class="dice-option">
+                <input type="radio" name="dieType" value="2">
+                <span class="die-shape die-d2"></span>
+                <span class="die-name">D2</span>
+            </label>
+
+            <label class="dice-option">
+                <input type="radio" name="dieType" value="4">
+                <span class="die-shape die-d4"></span>
+                <span class="die-name">D4</span>
+            </label>
+
+            <label class="dice-option">
+                <input type="radio" name="dieType" value="6">
+                <span class="die-shape die-d6"></span>
+                <span class="die-name">D6</span>
+            </label>
+
+            <label class="dice-option">
+                <input type="radio" name="dieType" value="8">
+                <span class="die-shape die-d8"></span>
+                <span class="die-name">D8</span>
+            </label>
+
+            <label class="dice-option">
+                <input type="radio" name="dieType" value="10">
+                <span class="die-shape die-d10"></span>
+                <span class="die-name">D10</span>
+            </label>
+
+            <label class="dice-option">
+                <input type="radio" name="dieType" value="12">
+                <span class="die-shape die-d12"></span>
+                <span class="die-name">D12</span>
+            </label>
+
+            <label class="dice-option">
+                <input type="radio" name="dieType" value="20" checked>
+                <span class="die-shape die-d20"></span>
+                <span class="die-name">D20</span>
+            </label>
+
+            <label class="dice-option">
+                <input type="radio" name="dieType" value="100">
+                <span class="die-shape die-d100"></span>
+                <span class="die-name">D100</span>
+            </label>
+        </div>
+    </fieldset>
+    <label for="targetNumber">Count results equal to:</label>
+   <input id="targetNumber" type="number" min="1" max="20" step="1" value="1">
+    <button id="rollButton">Roll</button>
+
+    <h2>Roll Results</h2>
+    <div id="rollsDisplay" class="rolls-display"></div>
+
+    <div class="result-summary">
+        <div class="summary-box">
+            <span class="summary-label">Total</span>
+            <span id="totalResult" class="summary-value">0</span>
+        </div>
+
+        <div class="summary-box">
+            <span class="summary-label">Target</span>
+            <span id="targetResult" class="summary-value">0</span>
+        </div>
+
+        <div class="summary-box">
+            <span class="summary-label">Matches</span>
+            <span id="matchesResult" class="summary-value">0</span>
+        </div>
+    </div>
+
+    <p id="result">Your result will appear here.</p>
+
+    <h2>Roll History</h2>
+    <button id="clearHistoryButton">Clear History</button>
+    <ul id="historyList"></ul>
+
+    <script src="script.js"></script>
+</body>
+</html>

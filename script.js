@@ -94,3 +94,9 @@ diceOptions.addEventListener("change", function () {
         targetNumber.value = 1;
     }
 });
+
+if ("serviceWorker" in navigator) {
+    window.addEventListener("load", function () {
+        navigator.serviceWorker.register("./service-worker.js");
+    });
+}

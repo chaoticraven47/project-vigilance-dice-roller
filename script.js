@@ -10,6 +10,11 @@ const diceOptions = document.querySelector("#diceOptions");
 const historyList = document.querySelector('#historyList');
 const clearHistoryButton = document.querySelector('#clearHistoryButton');
 const maxHistoryItems = 5;
+const copyLinkButton = document.querySelector("#copyLinkButton");
+const copyStatus = document.querySelector("#copyStatus");
+
+const appLink =
+    "https://chaoticraven47.github.io/project-vigilance-dice-roller/";
 
 rollButton.addEventListener('click', function () {
     const amount = Number(diceCount.value);
@@ -100,3 +105,19 @@ if ("serviceWorker" in navigator) {
         navigator.serviceWorker.register("./service-worker.js");
     });
 }
+
+copyLinkButton.addEventListener("click", function () {
+    if (!navigator.clipboard) {
+        copyStatus.textContent = appLink;
+        return;
+    }
+
+    navigator.clipboard.writeText(appLink)
+        .then(function () {
+            copyStatus.textContent = "App link copied.";
+        })
+        .catch(function () {
+            copyStatus.textContent =
+                "Could not copy automatically. Link: " + appLink;
+        });
+});

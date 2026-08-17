@@ -107,17 +107,18 @@ if ("serviceWorker" in navigator) {
 }
 
 copyLinkButton.addEventListener("click", function () {
-    if (!navigator.clipboard) {
-        copyStatus.textContent = appLink;
-        return;
-    }
+    const temporaryInput = document.createElement("textarea");
 
-    navigator.clipboard.writeText(appLink)
-        .then(function () {
-            copyStatus.textContent = "App link copied.";
-        })
-        .catch(function () {
-            copyStatus.textContent =
-                "Could not copy automatically. Link: " + appLink;
-        });
+    temporaryInput.value = appLink;
+    document.body.appendChild(temporaryInput);
+    temporaryInput.select();
+
+    const copied = document.execCommand("copy");
+    temporaryInput.remove();
+
+    if (copied) {
+        copyStatus.textContent = "App link copied.";
+    } else {
+        copyStatus.textContent = "Copy this link: " + appLink;
+    }
 });
